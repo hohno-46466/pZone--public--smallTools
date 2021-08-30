@@ -1,4 +1,2 @@
 #! /bin/sh
-export LANG=C; 
-export LC_ALL=C; 
-/bin/date "$@"
+export LANG=C; export LC_ALL=C; /bin/date "$@"

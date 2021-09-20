@@ -3,13 +3,15 @@
 Small Tools
 
     pZone--public--smallTools
-     ├── README.md
-     └── bin
-         ├── cdate
-         ├── han2zen
-         ├── say-e
-         ├── say-j
-         ├── texclean
-         └── zen2han
+     ├── bin
+     │   ├── cdate
+     │   ├── h2z -> han2zen
+     │   ├── han2zen
+     │   ├── say-e
+     │   ├── say-j
+     │   ├── texclean
+     │   ├── z2h -> zen2han
+     │   └── zen2han
+     └── README.md
      
-     1 directory, 7 files (Last udpate: Tue Aug 31 05:25:19 JST 2021)
+     1 directory, 9 files (Mon Sep 20 22:14:40 JST 2021)

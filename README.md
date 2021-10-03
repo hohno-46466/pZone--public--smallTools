@@ -7,6 +7,7 @@ Small Tools
      │   ├── cdate
      │   ├── h2z -> han2zen
      │   ├── han2zen
+     │   ├── mkbat4winFS.sh
      │   ├── say-e
      │   ├── say-j
      │   ├── texclean
@@ -15,5 +16,5 @@ Small Tools
      │   └── zen2han
      └── README.md
      
-     1 directory, 10 files (Mon Oct  4 06:45:29 JST 2021)
+     1 directory, 11 files (Mon Oct  4 06:57:22 JST 2021)
 

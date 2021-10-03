@@ -10,8 +10,10 @@ Small Tools
      │   ├── say-e
      │   ├── say-j
      │   ├── texclean
+     │   ├── treex
      │   ├── z2h -> zen2han
      │   └── zen2han
      └── README.md
      
-     1 directory, 9 files (Mon Sep 20 22:14:40 JST 2021)
+     1 directory, 10 files (Mon Oct  4 06:45:29 JST 2021)
+

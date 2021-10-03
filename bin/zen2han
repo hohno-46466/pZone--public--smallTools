@@ -1,5 +1,5 @@
 #! /usr/bin/ruby
-require "moji" # Note: Consider "$ gem install moji" if this script occurs error
+require "moji" # Note: Consider "$ sudo gem install moji" if this script occurs error
 while str = STDIN.gets
   print Moji.zen_to_han(str, Moji::ZEN_ASYMBOL|Moji::ZEN_ALNUM)
 end

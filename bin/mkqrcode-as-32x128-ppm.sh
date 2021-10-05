@@ -1,5 +1,7 @@
 #! /bin/sh
 
+# mkqrcode-as-32x128-ppm.sh
+
 scr=$HOME/bin/mkqrcode-as-text.pl
 prefix="$HOME/tmp"
 
@@ -57,7 +59,7 @@ P3
 --EOF--
 perl $scr "$url" \
 | sed -e 's/0/P/g' -e 's/1/Q/g' \
-| sed -e "s/P/${RGB1} /g" -e "s/Q/${XXX1} /g" 
+| sed -e "s/P/${RGB1} /g" -e "s/Q/${XXX1} /g"
 ) \
 | $p3top6 \
 | convert - -crop 29x29+4+4 - \
@@ -76,4 +78,3 @@ echo "result: $out1" 2>&1
 echo "result: $out2" 2>&1
 
 exit 0;
-

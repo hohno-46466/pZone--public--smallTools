@@ -1,0 +1,14 @@
+#! /bin/sh
+#
+# screen-pp
+#
+# Last update: Mon Oct 11 13:50:06 JST 2021
+#
+screen -ls   |  # get screen names
+sort -t. -k2 |	# sort by group name such as A0, A1, A2, B1, B2, ...
+expand       |  #
+awk -F- '{
+    if(/^ /){Q=$1;sub(" *[0-9]+[^0-9]", "", Q);	 # Q has a group name
+    if(P!=Q){printf "[%s]\n", Q;P=Q}};{print $0} # if the group name changed, Q is updated by the new name
+}'           |  # pretty printed by using awk
+sed -e '/^There are/d' -e '/Sockets in/s/^/There are /' -e 's/^        /  /'

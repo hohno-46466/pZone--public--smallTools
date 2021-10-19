@@ -1,3 +1,3 @@
 #! /bin/sh
 TARGET=$HOME/bin
-rsync -avE "$@" $(pwd)/ $TARGET 
+rsync -avE "$@" --exclude=00doit.sh $(pwd)/ $TARGET 

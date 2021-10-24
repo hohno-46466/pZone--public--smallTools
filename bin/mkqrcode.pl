@@ -1,4 +1,7 @@
 #!/usr/bin/perl
+#
+# usage: perl mkqrcode.pl [ URL [ Version [ ECC ] ] 
+#
 use strict;
 use warnings;
 use GD::Barcode::QRcode;
@@ -17,13 +20,15 @@ use GD::Barcode::QRcode;
 # my $url = 'https://goo.gl/3dokdk';
 # my $url = 'https://goo.gl/38HsGo';
 
-my $url = 'https://goo.gl/';
+my $url  = 'https://goo.gl/';
 my $home = $ENV{"HOME"};
-my $out="$home/tmp/qr.gif";
+my $out  = "$home/tmp/qr.gif";
+my $QRversion = 3;
+my $QRecc     = 'H';
 
-if (@ARGV >= 1) {
-  $url = $ARGV[0];
-}
+if (@ARGV >= 1) { $url = $ARGV[0]; }
+if (@ARGV >= 2) { $version = $ARGV[1]; }
+if (@ARGV >= 3) { $Ecc = $ARGV[2]; }
  
 #TEXT# my $qr  = GD::Barcode::QRcode->new($url, {Ecc => 'H', Version => 3, ModuleSize => 1});
 #TEXT# my $qrstr = $qr->barcode();
@@ -33,7 +38,8 @@ if (@ARGV >= 1) {
 my $qr  = GD::Barcode::QRcode->new($url, {
 #    Ecc => 'M', Version => 3, ModuleSize => 2,
 #    Ecc => 'H', Version => 3, ModuleSize => 2,
-     Ecc => 'H', Version => 3, ModuleSize => 4,
+#    Ecc => 'H', Version => 3, ModuleSize => 4,
+     Ecc => $QRecc, Version => $QRversion, ModuleSize => 4,
 })->plot;
 
 open my $fh, '>', $out or die;

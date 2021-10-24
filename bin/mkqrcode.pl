@@ -42,6 +42,8 @@ my $qr  = GD::Barcode::QRcode->new($url, {
      Ecc => $QRecc, Version => $QRversion, ModuleSize => 4,
 })->plot;
 
+my $errStr = GD::Barcode::QRcode::errStr;
+
 open my $fh, '>', $out or die;
 # print "output: $out\n";
 print {$fh} $qr->gif;

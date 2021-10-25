@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-# usage: perl mkqrcode.pl [ URL [ ECC [ Version [ ModuleSize ] ] ] ] 
+# usage: perl mkqrcode.pl [ URL [ ECC [ Version [ ModuleSize ] ] ] ]
 #
 use strict;
 use warnings;
@@ -20,12 +20,23 @@ use GD::Barcode::QRcode;
 # my $url = 'https://goo.gl/3dokdk';
 # my $url = 'https://goo.gl/38HsGo';
 
+my $debugFlag = 0;
 my $url  = 'https://goo.gl/';
 my $home = $ENV{"HOME"};
 my $out  = "$home/tmp/qr.gif";
-my $QRversion = 3;
-my $QRecc     = 'H';
+my $QRversion    = 3;
+my $QRecc        = 'H';
 my $QRmoduleSize = 4;
+
+if ((@ARGV >= 1) && (($ARGV[0] eq "-h") || ($ARGV[0] eq "--help"))) {
+  print "usage: perl mkqrcode.pl [ -d|--debug ] [ URL [ ECC [ Version [ ModuleSize ] ] ] ]\n";
+  exit(0);
+}
+
+if ((@ARGV >= 1) && (($ARGV[0] eq "-d") || ($ARGV[0] eq "--debug"))) {
+  $debugFlag++;
+  shift;
+}
 
 if (@ARGV >= 1) { $url = $ARGV[0]; }
 if (@ARGV >= 2) { $QRecc = $ARGV[1]; }
@@ -47,7 +58,7 @@ my $qr  = GD::Barcode::QRcode->new($url, {
 # my $errStr = GD::Barcode::QRcode::errStr;
 
 open my $fh, '>', $out or die;
-# print "output: $out\n";
+if ($debugFlag > 0) { print "output: $out\n"; }
 print {$fh} $qr->gif;
 close $fh;
 

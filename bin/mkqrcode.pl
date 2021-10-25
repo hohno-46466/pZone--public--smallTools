@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-# usage: perl mkqrcode.pl [ URL [ Version [ ECC ] ] 
+# usage: perl mkqrcode.pl [ URL [ ECC [ Version [ ModuleSize ] ] ] ] 
 #
 use strict;
 use warnings;
@@ -25,10 +25,12 @@ my $home = $ENV{"HOME"};
 my $out  = "$home/tmp/qr.gif";
 my $QRversion = 3;
 my $QRecc     = 'H';
+my $QRmoduleSize = 4;
 
 if (@ARGV >= 1) { $url = $ARGV[0]; }
-if (@ARGV >= 2) { $version = $ARGV[1]; }
-if (@ARGV >= 3) { $Ecc = $ARGV[2]; }
+if (@ARGV >= 2) { $QRecc = $ARGV[1]; }
+if (@ARGV >= 3) { $QRversion = $ARGV[2]; }
+if (@ARGV >= 4) { $QRmoduleSize = $ARGV[3]; }
  
 #TEXT# my $qr  = GD::Barcode::QRcode->new($url, {Ecc => 'H', Version => 3, ModuleSize => 1});
 #TEXT# my $qrstr = $qr->barcode();
@@ -39,10 +41,10 @@ my $qr  = GD::Barcode::QRcode->new($url, {
 #    Ecc => 'M', Version => 3, ModuleSize => 2,
 #    Ecc => 'H', Version => 3, ModuleSize => 2,
 #    Ecc => 'H', Version => 3, ModuleSize => 4,
-     Ecc => $QRecc, Version => $QRversion, ModuleSize => 4,
+     Ecc => $QRecc, Version => $QRversion, ModuleSize => $QRmoduleSize,
 })->plot;
 
-my $errStr = GD::Barcode::QRcode::errStr;
+# my $errStr = GD::Barcode::QRcode::errStr;
 
 open my $fh, '>', $out or die;
 # print "output: $out\n";

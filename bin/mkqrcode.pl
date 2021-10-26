@@ -33,7 +33,7 @@ if ((@ARGV >= 1) && (($ARGV[0] eq "-h") || ($ARGV[0] eq "--help"))) {
   exit(0);
 }
 
-if ((@ARGV >= 1) && (($ARGV[0] eq "-d") || ($ARGV[0] eq "--debug"))) {
+while ((@ARGV >= 1) && (($ARGV[0] eq "-d") || ($ARGV[0] eq "--debug"))) {
   $debugFlag++;
   shift;
 }
@@ -47,18 +47,30 @@ if (@ARGV >= 4) { $QRmoduleSize = $ARGV[3]; }
 #TEXT# my $qrstr = $qr->barcode();
 #TEXT# print STDOUT "$qrstr";
 #TEXT# exit(0);
+#
+my $qr;
 
-my $qr  = GD::Barcode::QRcode->new($url, {
+eval {$qr  = GD::Barcode::QRcode->new($url, {
 #    Ecc => 'M', Version => 3, ModuleSize => 2,
 #    Ecc => 'H', Version => 3, ModuleSize => 2,
 #    Ecc => 'H', Version => 3, ModuleSize => 4,
      Ecc => $QRecc, Version => $QRversion, ModuleSize => $QRmoduleSize,
-})->plot;
+})->plot};
 
-# my $errStr = GD::Barcode::QRcode::errStr;
+if ($@) {
+  if ($debugFlag >= 1) { 
+    print("Can't create QRcode with Ecc=>'$QRecc' and Version=>'$QRversion'\n");
+  }
+  exit(99);
+}
 
 open my $fh, '>', $out or die;
-if ($debugFlag > 0) { print "output: $out\n"; }
+if ($debugFlag >= 2) { 
+  print("QRcode with Ecc=>'$QRecc' and Version=>'$QRversion' has been created.\n");
+}
+if ($debugFlag >= 1) {
+  print "output: $out\n";
+}
 print {$fh} $qr->gif;
 close $fh;
 

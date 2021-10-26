@@ -1,3 +1,10 @@
 #! /bin/sh
+
 TARGET=$HOME/bin
-rsync -avE "$@" --exclude=00doit.sh $(pwd)/ $TARGET 
+
+opt="--exclude '.*.swp'"
+opt="$opt --exclude '*~'"
+opt="$opt --exclude '*.bak'"
+opt="$opt --exclude '00doit.sh'"
+
+rsync -avE "$@" $opt $(pwd)/ $TARGET 

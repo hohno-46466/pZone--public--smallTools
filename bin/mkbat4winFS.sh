@@ -1,6 +1,8 @@
 #! /bin/sh
 #
-# mkbat4winFS.sh - Replace unix symbolic links in the current directory with windows style symbolic links
+# mkbat4winFS.sh - Create a windows batch file to replace the UNIX symbolic link in the current directory with a windows-style symbolic link
+#
+# Note: Save the output of this script as a batch file (.bat extension) and run it on Windows PowerShell with administrative privileges. 
 #
 # Last update: Mon Oct  4 06:55:42 JST 2021
 #

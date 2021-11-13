@@ -1,4 +1,5 @@
-#! /usr/bin/ruby
+#!/usr/bin/env ruby
+# print "# debug: ruby #{ RUBY_VERSION }p#{ RUBY_PATCHLEVEL }\n"
 
 # p6top3 - Convert PPM Type P6 (binary) to Type P3 (ascii)
 

@@ -1,5 +1,8 @@
-#! /usr/bin/ruby
+#!/usr/bin/env ruby
+# print "# debug: ruby #{ RUBY_VERSION }p#{ RUBY_PATCHLEVEL }\n"
+
 require "moji" # Note: Consider "$ sudo gem install moji" if this script occurs error
 while str = STDIN.gets
   print Moji.han_to_zen(str)
 end
+

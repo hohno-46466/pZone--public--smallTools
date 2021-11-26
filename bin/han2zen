@@ -1,4 +1,4 @@
-#! /usr/bin/ruby
+#! /usr/bin/env ruby
 require "moji" # Note: Consider "$ sudo gem install moji" if this script occurs error
 while str = STDIN.gets
   print Moji.han_to_zen(str)

@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 #
 # usage: perl mkqrcode.pl [ URL [ ECC [ Version [ ModuleSize ] ] ] ]
 #

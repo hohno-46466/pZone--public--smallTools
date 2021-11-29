@@ -13,11 +13,12 @@ opts="$opts --exclude=.Spotlight-V100"
 opts="$opts --exclude=.TemporaryItems"
 opts="$opts --exclude=.fseventsd"
 opts="$opts --exclude=.git*"
-opts="$opts --exclude '*.swp'"
-opts="$opts --exclude '*~'"
-opts="$opts --exclude '*.bak'"
-opts="$opts --exclude '*.md'"
-opts="$opts --exclude '*.txt'"
+opts="$opts --exclude='*.swp'"
+opts="$opts --exclude='*~'"
+opts="$opts --exclude='*.bak'"
+
+opts="$opts --exclude='*.md'"
+opts="$opts --exclude='*.txt'"
 
 echo $(echo rsync -avE $@ $opts $(pwd)/ $TARGET)
 eval $(echo rsync -avE $@ $opts $(pwd)/ $TARGET)

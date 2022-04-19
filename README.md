@@ -3,7 +3,7 @@
 Small Tools
 
 
-    pZone--public--smallTools
+    ./pZone--public--smallTools
      ├── README.md
      └── bin
          ├── QRclock2.sh

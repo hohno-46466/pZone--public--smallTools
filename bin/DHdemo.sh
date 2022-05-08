@@ -49,7 +49,7 @@ else
   done
   # echo 
   
-  echo "# 乱数発生"
+  echo "# 乱数発生（秘匿鍵生成用）"
   echo "Rnd1 = $Rnd1"
   echo "Rnd2 = $Rnd2"
   echo ""
@@ -57,24 +57,23 @@ else
   Sa=$((($Rnd1 % ($p-1)) + 1))
   Sb=$((($Rnd2 % ($p-1)) + 1))
 
-  echo "# 秘匿鍵を生成"
-  echo "Sa = Rnd1 mod p = ($Rnd1 mod ($p-1))+1 = $Sa  # Note: Sa = 1..p-1"
-  echo "Sb = Rnd2 mod p = ($Rnd2 mod ($p-1))+1 = $Sb  # Note: Sb = 1..p-1"
+  echo "# 乱数から秘匿鍵を生成（１以上，p(=$p) 未満の整数）"
+  echo "Sa = (Rnd1 mod (p-1))+1 = ($Rnd1 mod ($p-1))+1 = $Sa  # where 0 < Sa < $p)"
+  echo "Sb = (Rnd2 mod (p-1))+1 = ($Rnd2 mod ($p-1))+1 = $Sb  # where 0 < Sb < $p)"
   echo ""
 
 fi
 
+Pa=$(calc -- "(2 ** $Sa) % $p" | expand | tr -d ' ')
+Pb=$(calc -- "(2 ** $Sb) % $p" | expand | tr -d ' ')
 
-Pa=$($calc -- "(2 ** $Sa) % $p" | tr -d ' 	')
-Pb=$($calc -- "(2 ** $Sb) % $p" | tr -d ' 	')
-
-echo "# 公開鍵を生成"
+echo "# 秘匿鍵から公開鍵を生成"
 echo "Pa = g^Sa mod p = 2^$Sa mod $p = $Pa"
 echo "Pb = g^Sb mos p = 2^$Sb mod $p = $Pb"
 echo ""
 
-Ka=$($calc -- "($Pb ** $Sa) % $p" | tr -d ' 	')
-Kb=$($calc -- "($Pa ** $Sb) % $p" | tr -d ' 	')
+Ka=$(calc -- "($Pb ** $Sa) % $p" | expand | tr -d ' ')
+Kb=$(calc -- "($Pa ** $Sb) % $p" | expand | tr -d ' ')
 
 echo "# 相手の公開鍵と自分の秘匿鍵から共有鍵を生成"
 echo "Ka = Pb^Sa mod p = $Pb^$Sa mod $p = $Ka"
@@ -83,6 +82,6 @@ echo ""
 
 Kcommon=$($calc -- "(2 ** ($Sa * $Sb)) % $p" 2>&1 | expand | sed 's/^ *//')
 
-echo "# 共有鍵を確認（Sa*Sb の大きさによってはエラーになることもある）"
-echo "Kcommon = 2^(Sa*Sb) mod p = 2^($Sa*$Sb) mod $p = $Kcommon"
+echo "# 共有鍵を確認（Sa*Sb の大きさによっては計算できないこともある）"
+echo "Kcommon = 2^(Sa*Sb) mod p = 2^($Sa*$Sb) mod $p = 2^$((Sa*$Sb)) mod $p = $Kcommon"
 echo ""

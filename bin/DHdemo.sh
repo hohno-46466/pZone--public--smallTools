@@ -4,6 +4,8 @@
 # Prev update: Sat Apr 30 17:45:01 JST 2022 by @hohno_at_kuimc
 # Last update: Sun May  1 06:47:15 JST 2022 by @hohno_at_kuimc
 
+calc=apcalc
+
 g=2
 
 #p=${1-163}
@@ -63,23 +65,23 @@ else
 fi
 
 
-Pa=$(calc -- "(2 ** $Sa) % $p" | tr -d ' 	')
-Pb=$(calc -- "(2 ** $Sb) % $p" | tr -d ' 	')
+Pa=$($calc -- "(2 ** $Sa) % $p" | tr -d ' 	')
+Pb=$($calc -- "(2 ** $Sb) % $p" | tr -d ' 	')
 
 echo "# 公開鍵を生成"
 echo "Pa = g^Sa mod p = 2^$Sa mod $p = $Pa"
 echo "Pb = g^Sb mos p = 2^$Sb mod $p = $Pb"
 echo ""
 
-Ka=$(calc -- "($Pb ** $Sa) % $p" | tr -d ' 	')
-Kb=$(calc -- "($Pa ** $Sb) % $p" | tr -d ' 	')
+Ka=$($calc -- "($Pb ** $Sa) % $p" | tr -d ' 	')
+Kb=$($calc -- "($Pa ** $Sb) % $p" | tr -d ' 	')
 
 echo "# 相手の公開鍵と自分の秘匿鍵から共有鍵を生成"
 echo "Ka = Pb^Sa mod p = $Pb^$Sa mod $p = $Ka"
 echo "Kb = Pa^Sb mod p = $Pa^$Sb mod $p = $Kb"
 echo ""
 
-Kcommon=$(calc -- "(2 ** ($Sa * $Sb)) % $p" 2>&1 | expand | sed 's/^ *//')
+Kcommon=$($calc -- "(2 ** ($Sa * $Sb)) % $p" 2>&1 | expand | sed 's/^ *//')
 
 echo "# 共有鍵を確認（Sa*Sb の大きさによってはエラーになることもある）"
 echo "Kcommon = 2^(Sa*Sb) mod p = 2^($Sa*$Sb) mod $p = $Kcommon"

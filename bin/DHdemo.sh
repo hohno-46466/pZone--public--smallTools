@@ -2,9 +2,15 @@
 
 # First version: Sat Apr 30 08:46:40 JST 2022 by @hohno_at_kuimc
 # Prev update: Sat Apr 30 17:45:01 JST 2022 by @hohno_at_kuimc
-# Last update: Sun May  1 06:47:15 JST 2022 by @hohno_at_kuimc
+# Prev update: Sun May  1 06:47:15 JST 2022 by @hohno_at_kuimc
+# Last update: Mon May  9 00:00:35 JST 2022 by @hohno_at_kuimc
 
-calc=apcalc
+calc=$(which calc | grep -v '/usp/TOOL/'| tail -1)
+[ "x$calc" = "x" ] && calc=$(which apcalc | grep -v '/usp/TOOL/'| tail -1)
+[ "x$calc" = "x" ] && exit 9
+
+od=$(which od | grep -v '/usp/TOOL/'| tail -1)
+[ "x$od" = "x" ] && exit 9
 
 g=2
 
@@ -40,11 +46,11 @@ if [ "x$2" != "x" -a "x$3" != "x" ]; then
 
 else
 
-  Rnd1=$(od -An -tu4 -N4 /dev/urandom | tr -d ' ')
+  Rnd1=$($od -An -tu4 -N4 /dev/urandom | tr -d ' ')
   Rnd2=$Rnd1
   
   while [ "$Rnd1" = "$Rnd2" ]; do
-    Rnd2=$(od -An -tu4 -N4 /dev/urandom | tr -d ' ')
+    Rnd2=$($od -An -tu4 -N4 /dev/urandom | tr -d ' ')
     # echo -n "."
   done
   # echo 
@@ -64,16 +70,16 @@ else
 
 fi
 
-Pa=$(calc -- "(2 ** $Sa) % $p" | expand | tr -d ' ')
-Pb=$(calc -- "(2 ** $Sb) % $p" | expand | tr -d ' ')
+Pa=$($calc -- "(2 ** $Sa) % $p" | expand | tr -d ' ')
+Pb=$($calc -- "(2 ** $Sb) % $p" | expand | tr -d ' ')
 
 echo "# 秘匿鍵から公開鍵を生成"
 echo "Pa = g^Sa mod p = 2^$Sa mod $p = $Pa"
 echo "Pb = g^Sb mos p = 2^$Sb mod $p = $Pb"
 echo ""
 
-Ka=$(calc -- "($Pb ** $Sa) % $p" | expand | tr -d ' ')
-Kb=$(calc -- "($Pa ** $Sb) % $p" | expand | tr -d ' ')
+Ka=$($calc -- "($Pb ** $Sa) % $p" | expand | tr -d ' ')
+Kb=$($calc -- "($Pa ** $Sb) % $p" | expand | tr -d ' ')
 
 echo "# 相手の公開鍵と自分の秘匿鍵から共有鍵を生成"
 echo "Ka = Pb^Sa mod p = $Pb^$Sa mod $p = $Ka"

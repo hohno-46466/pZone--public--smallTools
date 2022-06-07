@@ -1,4 +1,4 @@
-#! /bin/sh -u
+#!/bin/sh -u
 
 # Last update: Wed Oct 27 06:38:35 JST 2021 by @hohno_at_kuimc
 

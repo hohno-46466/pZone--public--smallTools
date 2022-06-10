@@ -2,27 +2,29 @@
 
 Small Tools
 
-
     ./pZone--public--smallTools
      ├── README.md
      └── bin
+         ├── 00doit.sh
+         ├── DHdemo.sh
          ├── QRclock2.sh
+         ├── addts.sh
          ├── cdate
          ├── h2z -> han2zen
          ├── han2zen
-         ├── mkbat4winFS.sh
-         ├── mkqrcode-as-32x128-ppm.sh
-         ├── mkqrcode-as-ppm.sh
-         ├── mkqrcode-as-ppm2.sh
          ├── mkqrcode-as-text.pl
          ├── mkqrcode.pl
          ├── mkqrcode.sh
+         ├── p3top6.rb
+         ├── p6top3.rb
          ├── say-e
          ├── say-j
          ├── scale
+         ├── screen-pp
          ├── texclean
          ├── treex
          ├── z2h -> zen2han
          └── zen2han
+     
+     1 directory, 21 files (Sat Jun 11 05:51:43 JST 2022)
 
-     1 directory, 19 files (Wed Oct  6 05:46:22 JST 2021)

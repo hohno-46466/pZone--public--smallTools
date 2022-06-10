@@ -1,5 +1,5 @@
 #! /bin/sh
 
-tree -N $(pwd | sed 's/^.*\//..\//') "$@" | sed 's/^/     /' | sed -e '1s/     \.\.\//    /' | awk '{printf "\n%s",$0}'
+tree -N $(pwd | sed 's/^.*\//..\//') "$@" | sed 's/^/     /' | sed -e '1s/     \.\.\//    .\//' | awk '{printf "\n%s",$0}'
 echo " ($(LANG=C date))"
 echo ""

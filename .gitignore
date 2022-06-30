@@ -1,6 +1,10 @@
 #
-# Last update: Thu Jun 24 05:21:25 JST 2021
+# Last update: Thu Jun 30 20:28:17 JST 2022 by @hohno_at_kuimc
 #
-\#*.*
 .DS_Store
+\#*.*
+.#*.*
 *.swp
+*.bak
+*~
+.dummy4GHCG.tsv

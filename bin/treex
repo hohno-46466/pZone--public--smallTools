@@ -2,6 +2,11 @@
 
 # Last update: Thu Jun 30 20:52:55 JST 2022
 
-tree -N -p $(pwd | sed 's/^.*\//..\//') "$@" | sed 's/^/     /' | sed -e '1s/     \.\.\//    .\//'| sed -e 's/\[[^d].*\]//' -e 's/\[d.*\] \(.*\)$/\1\//' | awk '{printf "\n%s",$0}' | tail +2
+tree -N -p $(pwd | sed 's/^.*\//..\//') "$@" \
+	| sed 's/^/     /' \
+	| sed -e '1s/     \.\.\//    .\//'\
+	| sed -e 's/\[[^d].........\] //' -e 's/\[d.........\] \(.*\)$/\1\//' \
+	| awk '{printf "\n%s",$0}' \
+	| tail +2
 echo " ($(LANG=C date))"
 echo ""

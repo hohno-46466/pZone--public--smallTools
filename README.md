@@ -32,3 +32,5 @@ Small Tools
 # Note: url = git@github.com:hohno-46466/pZone--public--smallTools.git
 
 # Note: url = https://github.com/hohno-46466/pZone--public--smallTools
+
+-EOF-

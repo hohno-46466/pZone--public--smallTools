@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby2.5
-#print "# debug: ruby #{ RUBY_VERSION }p#{ RUBY_PATCHLEVEL }\n"
+# print "# debug: ruby #{ RUBY_VERSION }p#{ RUBY_PATCHLEVEL }\n"
 
 require "moji" # Note: Consider "$ sudo gem install moji" if this script occurs error
 while str = STDIN.gets

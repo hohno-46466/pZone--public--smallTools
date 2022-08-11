@@ -10,9 +10,15 @@ cat -u "$@" | $sed -u -e "s/'/'\"'\"'/g" -e "s/^/'/" -e "s/$/'/" -e 's/^/echo "'
 
 exit $?
 
-# 上記の sed の補足説明
-# -e "s/'/'\"'\"'/g"  - 「'」を「'"'"'」に置き換える
-# -e "s/^/'/"         - 行頭に「'」を付加する．直上の変更と組み合わせると入力行の「'」が「"'"」になる
-# -e "s/$/'/"         - 行末に「'」を付加する
-# -e 's/^/echo "'$TSKEY'\t$('$date' +%s.%3N\)\t"/' - 上記の行の前に「"キーワード(TAB)時刻(TAG)"」を付加する
+# Note: To avoid command injection, the options of the sed command above are as the followings:
+# -e "s/'/'\"'\"'/g"  - replace all「'」with「'"'"'」
+# -e "s/^/'/"         - add「'」at the top of the line. All of「'」in the line are treated as「"'"」
+# -e "s/$/'/"         - add a「'」at the end of the line.
+# -e 's/^/echo "'$TSKEY'\t$('$date' +%s.%3N\)\t"/' - "Keyword(TAB)Time(TAB)"」will be added at the top of the line
 
+
+# 注意：コマンドインジェクションを回避するため、上記の sed コマンドのオプションは以下のようになっている：
+# -e "s/'/'\"'\"'/g"  - 全ての「'」を「'"'"'」に置換する
+# -e "s/^/'/"         - 行頭に「'」を追加. これにより行中の全ての「'」は「"'"」として扱われる
+# -e "s/$/'/"         - 行末に「'」を追加する
+# -e 's/^/echo "'$TSKEY'\t$('$date' +%s.%3N\)\t"/' - 行頭に「"キーワード(TAB)時刻(TAB)"」を追加する

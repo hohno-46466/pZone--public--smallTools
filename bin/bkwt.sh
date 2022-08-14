@@ -1,6 +1,8 @@
 #!/bin/sh
 
-# bkwt - backup with time stamp
+# bkwt - backup the specified wile with time stamp
+
+# Last modified: Sun Aug 14 14:29:15 JST 2022
 
 PNAME=$(basename $0)
 

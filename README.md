@@ -10,6 +10,7 @@ Small Tools
          ├──  DHdemo.sh
          ├──  QRclock2.sh
          ├──  addts.sh
+         ├──  bkwt.sh
          ├──  cdate
          ├──  h2z -> han2zen
          ├──  han2zen
@@ -27,7 +28,8 @@ Small Tools
          ├──  z2h -> zen2han
          └──  zen2han
      
-     1 directory, 22 files (Mon Jul 18 12:35:57 JST 2022)
+     1 directory, 23 files (Sun Aug 14 23:17:59 JST 2022)
+
 
 Note: URL = https://github.com/hohno-46466/pZone--public--smallTools
 

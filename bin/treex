@@ -1,12 +1,14 @@
 #! /bin/sh
 
-# Last update: Thu Jun 30 20:52:55 JST 2022
+# Prev update: Thu Jun 30 20:52:55 JST 2022
+# Last update: Thu Aug 18 12:34:36 JST 2022
 
 tree -N -p $(pwd | sed 's/^.*\//..\//') "$@" \
 	| sed 's/^/     /' \
 	| sed -e '1s/     \.\.\//    .\//'\
 	| sed -e 's/\[[^d].........\] //' -e 's/\[d.........\] \(.*\)$/\1\//' \
+	| sed -e '1s/  \.\.\//\.\//' \
 	| awk '{printf "\n%s",$0}' \
-	| tail +2
+	| tail -n +2
 echo " ($(LANG=C date))"
 echo ""

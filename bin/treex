@@ -1,11 +1,12 @@
 #! /bin/sh
 
 # Prev update: Thu Jun 30 20:52:55 JST 2022
-# Last update: Thu Aug 18 12:34:36 JST 2022
+# Prev update: Thu Aug 18 12:34:36 JST 2022
+# Last update: Thu Sep  1 08:38:16 JST 2022
 
 tree -N -p $(pwd | sed 's/^.*\//..\//') "$@" \
+	| sed -e '1s/\.\.\//.\//' -e 's/$/\//' -e 's/\/ *$//' \
 	| sed 's/^/     /' \
-	| sed -e '1s/     \.\.\//    .\//'\
 	| sed -e 's/\[[^d].........\] //' -e 's/\[d.........\] \(.*\)$/\1\//' \
 	| sed -e '1s/  \.\.\//\.\//' \
 	| awk '{printf "\n%s",$0}' \

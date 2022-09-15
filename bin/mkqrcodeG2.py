@@ -25,3 +25,6 @@ img = qr.make_image(fill_color="black", back_color="white")
 img.save(outfile)
 
 print("output: " + outfile)
+
+# FYI: See slso https://engineer-lifestyle-blog.com/code/python/qrcode-generator-save-reader-with-sample-code/
+

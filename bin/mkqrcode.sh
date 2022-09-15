@@ -3,10 +3,10 @@
 # Prev update: Fri Dec  2 11:04:19 JST 2016
 # Prev update: Wed Oct  6 06:15:44 JST 2021 (updated for bit.ly short URL)
 # Prev update: Tue Apr 19 23:48:45 JST 2022
-# Last update: Thu Sep 15 11:07:57 JST 2022 (updated for mkqrcode-tmp.py)
+# Last update: Thu Sep 15 11:07:57 JST 2022 (updated for mkqrcodeG2.py)
 
 scr=$HOME/bin/mkqrcode.pl
-scr=$HOME/bin/mkqrcode-tmp.py
+scr=$HOME/bin/mkqrcodeG2.py
 prefix="$HOME/tmp"
 
 if [ "x$1" = "x-h" -o "x$1" = "x-help" -o "x$1" = "x--help" ]; then

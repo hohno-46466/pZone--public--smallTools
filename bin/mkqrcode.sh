@@ -2,9 +2,11 @@
 
 # Prev update: Fri Dec  2 11:04:19 JST 2016
 # Prev update: Wed Oct  6 06:15:44 JST 2021 (updated for bit.ly short URL)
-# Last update: Tue Apr 19 23:48:45 JST 2022
+# Prev update: Tue Apr 19 23:48:45 JST 2022
+# Last update: Thu Sep 15 11:07:57 JST 2022 (updated for mkqrcode-tmp.py)
 
 scr=$HOME/bin/mkqrcode.pl
+scr=$HOME/bin/mkqrcode-tmp.py
 prefix="$HOME/tmp"
 
 if [ "x$1" = "x-h" -o "x$1" = "x-help" -o "x$1" = "x--help" ]; then
@@ -46,7 +48,8 @@ elif [ "x$Qmode" = "B" ]; then
   fi
 fi
 
-tmp="${prefix}/qr.gif"
+# tmp="${prefix}/qr.gif"
+tmp="${prefix}/QRoutput.gif"
 
 if [ "x$Qmode" = "xG" ]; then
   echo "Qmode(G)"
@@ -99,8 +102,10 @@ for x in "$tmp" "$out"; do
   [ ! -f "$x" ] && exit 9
 done
 
-perl $scr "$str" || exit 1;
+# perl $scr "$str" || exit 1;
+# mv "$tmp" "$out" && echo "result: $out"
 
+$scr "$str" || exit 1;
 mv "$tmp" "$out" && echo "result: $out"
 
 ls -l "$out"

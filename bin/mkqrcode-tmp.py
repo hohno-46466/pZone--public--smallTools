@@ -18,6 +18,7 @@ qr = qrcode.QRCode(version=3, error_correction=qrcode.constants.ERROR_CORRECT_L,
 #qr.add_data('https://bit.ly/3bzbn0T')
 qr.add_data(QRcode)
 img = qr.make_image(fill_color="black", back_color="white")
-outfile = HOME + "/tmp/qrsample.gif"
+outfile = HOME + "/tmp/QRoutput.gif"
+#outfile = HOME + "/tmp/qrsample.gif"
 img.save(outfile)
 print("output: " + outfile)

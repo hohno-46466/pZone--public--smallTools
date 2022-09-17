@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# mkqrcodeG2-as-text.sh
+
+# Last update:  Sun Sep 18 04:05:05 JST 2022
+
+# export LANG=C
 
 URL="https://goo.gl/"
 OUT="$HOME/tmp/QRout.gif"
@@ -10,6 +15,7 @@ fi
 
 # echo "[$OUT]"
 
+# echo  qr --error-correction=H --ascii "$URL"
 qr --error-correction=H --ascii "$URL" | sed -n '3,$p' | sed -e '$d' 
 echo "    $URL"
 # echo ""

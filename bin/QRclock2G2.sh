@@ -3,10 +3,10 @@
 # QRclock2G2.sh
 
 # First version: Thu Sep 15 15:06:02 JST 2022 by @hohno_at_kuimc
-# Last update: Fri Sep 16 21:37:25 JST 2022 by @hohno_at_kuimc
+# Prev update: Fri Sep 16 21:37:25 JST 2022 by @hohno_at_kuimc
+# Last update: Sat Sep 24 06:38:14 JST 2022 by @hohno_at_kuimc
 
 PNAME=$(basename $0)
-LANG=C
 TMPFILE=/tmp/QRclock.tmp
 /bin/rm -f "$TMPFILE" || exit 999
 

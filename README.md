@@ -9,6 +9,7 @@ Small Tools
          ├──  00doit.sh
          ├──  DHdemo.sh
          ├──  QRclock2.sh
+         ├──  QRclock2G2.sh
          ├──  addts.sh
          ├──  bkwt.sh
          ├──  cdate
@@ -17,6 +18,8 @@ Small Tools
          ├──  mkqrcode-as-text.pl
          ├──  mkqrcode.pl
          ├──  mkqrcode.sh
+         ├──  mkqrcodeG2-as-text.sh
+         ├──  mkqrcodeG2.py
          ├──  p3top6.rb
          ├──  p6top3.rb
          ├──  say-e
@@ -29,7 +32,7 @@ Small Tools
          ├──  z2h -> zen2han
          └──  zen2han
      
-     1 directory, 24 files (Fri Sep  9 06:46:36 JST 2022)
+     1 directory, 27 files (Sun Sep 25 19:07:16 JST 2022)
 
 
 Note: URL = https://github.com/hohno-46466/pZone--public--smallTools

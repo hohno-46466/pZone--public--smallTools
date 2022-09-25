@@ -10,11 +10,19 @@ PNAME=$(basename $0)
 TMPFILE=/tmp/QRclock.tmp
 /bin/rm -f "$TMPFILE" || exit 999
 
+usage() {
+  echo "usage: ${PNAME} [-v] [-x]"
+}
+
+
 while [ "x$1" != "x" ]; do
   if [ "x$1" = "x-x" ]; then
     flag1="x"
   elif [ "x$1" = "x-v" ]; then
     flag2="v"
+  elif [ "x$1" = "x-h" -o "x$1" = "x--help" ]; then
+    usage;
+    exit 9
   fi
   shift
 done

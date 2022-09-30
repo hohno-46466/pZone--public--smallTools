@@ -1,4 +1,4 @@
-#! /opt/homebrew/opt/coreutils/libexec/gnubin/env python3
+#!/opt/homebrew/opt/coreutils/libexec/gnubin/env python3
 
 # mkqrcode-tmp.py
 

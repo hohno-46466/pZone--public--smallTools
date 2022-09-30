@@ -1,2 +1,4 @@
-#! /bin/sh
-say -v Kyoko "$@"
+#!/bin/sh
+[ "x$(uname)" = "xDarwin" ] && say -v Kyoko "$@" && exit 0
+echo "Run on Mac"
+exit 1

@@ -1,2 +1,4 @@
-#! /bin/sh
-say -v Allison "$@"
+#!/bin/sh
+[ "x$(uname)" = "xDarwin" ] && say -v Samantha "$@" && exit 0
+echo "Run on Mac"
+exit 1

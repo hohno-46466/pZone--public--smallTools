@@ -3,7 +3,7 @@
 # Prev updated: Thu Oct 20 10:24:45 JST 2022
 # Last updated: Thu Oct 20 13:40:44 JST 2022
 
-# pdf-to-2x5pdf.sh
+# pdf-to-2x5nameCards.sh
 
 INFILE="input0.pdf"
 if [ -f "$1" ]; then

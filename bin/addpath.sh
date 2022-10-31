@@ -1,11 +1,8 @@
 #!/bin/sh
 
-<<<<<<< HEAD
 # Note: You can download the latest version by using the command below:
 # $ wget https://richlab.org/j/5p84/addpath.sh
 
-=======
->>>>>>> 48a7a71c88dd14393455ba707a631d76084ab5ca
 ######################################################################
 #
 # ADDPATH.SH: Indicator of How to Add New Paths Into the Proper Run-Script
@@ -166,8 +163,4 @@ case $answer in Y|y|[Yy][Ee][Ss])
 	MESSAGE
 ;; esac
 
-<<<<<<< HEAD
 exit 0
-=======
-exit 0
->>>>>>> 48a7a71c88dd14393455ba707a631d76084ab5ca

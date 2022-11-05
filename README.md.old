@@ -2,7 +2,7 @@
 
 Small Tools
 
-     ./pZone--public--smallTools
+    ./pZone--public--smallTools
      ├──  README.md
      ├──  README.md.old
      └──  bin/
@@ -32,7 +32,7 @@ Small Tools
          ├──  z2h -> zen2han
          └──  zen2han
      
-     1 directory, 27 files (Sun Sep 25 19:07:16 JST 2022)
+     1 directory, 27 files (Sat Oct 15 22:54:07 JST 2022)
 
 
 Note: URL = https://github.com/hohno-46466/pZone--public--smallTools

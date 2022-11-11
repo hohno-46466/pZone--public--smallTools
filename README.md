@@ -34,7 +34,7 @@ Small Tools
          ├──  z2h -> zen2han
          └──  zen2han
      
-     1 directory, 29 files (Sun Nov  6 15:52:22 JST 2022)
+     1 directory, 29 files (Sat Nov 12 00:16:16 JST 2022)
 
 
 Note: URL = https://github.com/hohno-46466/pZone--public--smallTools

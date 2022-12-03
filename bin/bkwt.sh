@@ -2,7 +2,7 @@
 
 # bkwt - backup the specified wile with time stamp
 
-# Last updated: Sun Aug 14 14:29:15 JST 2022
+# Last update: Sun Aug 14 14:29:15 JST 2022
 
 PNAME=$(basename $0)
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Prev updated: Thu Oct 20 10:24:45 JST 2022
-# Last updated: Thu Oct 20 13:40:44 JST 2022
+# Prev update: Thu Oct 20 10:24:45 JST 2022
+# Last update: Thu Oct 20 13:40:44 JST 2022
 
 # pdf-to-2x5nameCards.sh
 

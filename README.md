@@ -2,7 +2,7 @@
 
 Small Tools
 
-     ./pZone--public--smallTools
+    ./pZone--public--smallTools
      ├──  README.md
      ├──  README.md.old
      └──  bin/
@@ -12,7 +12,9 @@ Small Tools
          ├──  QRclock2G2.sh
          ├──  addpath.sh
          ├──  addts.sh
+         ├──  addts.sh.bak
          ├──  bkwt.sh
+         ├──  bkwt.sh.bak
          ├──  cdate
          ├──  h2z -> han2zen
          ├──  han2zen
@@ -24,6 +26,7 @@ Small Tools
          ├──  p3top6.rb
          ├──  p6top3.rb
          ├──  pdf-to-2x5nameCards.sh
+         ├──  pdf-to-2x5nameCards.sh.bak
          ├──  say-e
          ├──  say-j
          ├──  scale
@@ -34,7 +37,7 @@ Small Tools
          ├──  z2h -> zen2han
          └──  zen2han
      
-     1 directory, 29 files (Wed Dec 21 18:50:20 JST 2022)
+     1 directory, 32 files (Thu Dec 22 04:09:36 JST 2022)
 
 
 Note: URL = https://github.com/hohno-46466/pZone--public--smallTools

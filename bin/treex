@@ -2,7 +2,8 @@
 
 # Prev update: Thu Jun 30 20:52:55 JST 2022
 # Prev update: Thu Aug 18 12:34:36 JST 2022
-# Last update: Thu Sep  1 08:38:16 JST 2022
+# Prev update: Thu Sep  1 08:38:16 JST 2022
+# Last update: Tue May 23 23:59:51 JST 2023
 
 tree -N -p $(pwd | sed 's/^.*\//..\//') "$@" 	| # tree コマンド実行．1行目の出力が tree コマンドのバージョンによって異なるため以下の対処が必要
 sed 's/^/     /' 				| # 各行の冒頭に空白を入れる
@@ -12,5 +13,5 @@ sed -e '2,$s/\[[^d].........\] //' 		\
     -e '2,$s/\[d.........\] \(.*\)$/\1\//'	| # 2行目以降を修正
 awk '{printf "\n%s",$0}' 			| # 各行の行末処理
 tail -n +2
-echo " ($(LANG=C date))"
+echo " ($(LANG=C LC_ALL=C date))"
 echo ""

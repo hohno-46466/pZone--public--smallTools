@@ -3,13 +3,14 @@
 # First version: Sat Apr 30 08:46:40 JST 2022 by @hohno_at_kuimc
 # Prev update: Sat Apr 30 17:45:01 JST 2022 by @hohno_at_kuimc
 # Prev update: Sun May  1 06:47:15 JST 2022 by @hohno_at_kuimc
-# Last update: Mon May  9 00:00:35 JST 2022 by @hohno_at_kuimc
+# Prev update: Mon May  9 00:00:35 JST 2022 by @hohno_at_kuimc
+# Last update: Thu Jul 27 23:47:02 JST 2023 by @hohno_at_kuimc
 
-calc=$(which calc | grep -v '/usp/TOOL/'| tail -1)
-[ "x$calc" = "x" ] && calc=$(which apcalc | grep -v '/usp/TOOL/'| tail -1)
+calc=$(which -a calc | grep -v '/usp/TOOL/'| tail -1)
+[ "x$calc" = "x" ] && calc=$(which -a apcalc | grep -v '/usp/TOOL/'| tail -1)
 [ "x$calc" = "x" ] && exit 9
 
-od=$(which od | grep -v '/usp/TOOL/'| tail -1)
+od=$(which -a od | grep -v '/usp/TOOL/'| tail -1)
 [ "x$od" = "x" ] && exit 9
 
 g=2

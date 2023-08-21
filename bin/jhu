@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# First version: Mon Aug 21 05:02:09 ADT 2023
+
+LANG=C 
+echo "$(TZ=Asia/Tokyo /bin/date "+%Y-%m-%d(%a) %H:%M %Z") / $(TZ=America/Halifax /bin/date "+%Y-%m-%d(%a) %H:%M %Z") / $(/bin/date -u "+%Y-%m-%d(%a) %H:%M %Z")"

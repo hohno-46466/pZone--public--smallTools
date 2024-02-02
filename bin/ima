@@ -2,15 +2,19 @@
 
 if [ "x$(echo $OSTYPE | grep -i darwin)" != "x" ]; then
   # macos
-  echo "A"
   /bin/echo -n "$(date '+%Y-%m-%d(%a) %H:%M %Z') / $(date -u '+%Y-%m-%d(%a) %H:%M %Z')" | tee -a /dev/stderr | pbcopy
+  echo 1>&2
+
 elif [ "x$WSL_DISTRO_NAME" != "x" ]; then
   # ubuntu on WSL
-  echo "B"
-  echo "$(date '+%Y-%m-%d(%a) %H:%M %Z') / $(date -u '+%Y-%m-%d(%a) %H:%M %Z')" | tee -a /dev/stderr | nkf -s | clip.exe
+  echo -n "$(date '+%Y-%m-%d(%a) %H:%M %Z') / $(date -u '+%Y-%m-%d(%a) %H:%M %Z')" | tee -a /dev/stderr | nkf -s | clip.exe
+  echo 1>&2
+
 elif [ "x$(which xclip)" != "x" ]; then
   # ubuntu with xclip
-  echo "$(date '+%Y-%m-%d(%a) %H:%M %Z') / $(date -u '+%Y-%m-%d(%a) %H:%M %Z')" | tee -a /dev/stderr | xclip -selection clipboard
+  echo -n "$(date '+%Y-%m-%d(%a) %H:%M %Z') / $(date -u '+%Y-%m-%d(%a) %H:%M %Z')" | tee -a /dev/stderr | xclip -selection clipboard
+  echo 1>&2
+
 else
   # ubuntu ???
   echo "$(date '+%Y-%m-%d(%a) %H:%M %Z') / $(date -u '+%Y-%m-%d(%a) %H:%M %Z')"

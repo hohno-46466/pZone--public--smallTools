@@ -5,6 +5,6 @@ if [ "x$(echo $OSTYPE | grep -i darwin)" != "x" ]; then
   /bin/echo -n "$(date '+%Y-%m-%d(%a) %H:%M %Z') / $(date -u '+%Y-%m-%d(%a) %H:%M %Z')" | pbcopy
 else
   # ubuntu on WSL
-  echo "$(date '+%Y-%m-%d(%a) %H:%M %Z') / $(date -u '+%Y-%m-%d(%a) %H:%M %Z')" | clip.exe
+  echo "$(date '+%Y-%m-%d(%a) %H:%M %Z') / $(date -u '+%Y-%m-%d(%a) %H:%M %Z')" | nkf -s | clip.exe
 fi
 

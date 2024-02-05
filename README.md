@@ -18,6 +18,9 @@ Small Tools
          ├──  cdate
          ├──  h2z -> han2zen
          ├──  han2zen
+         ├──  ima
+         ├──  jhdate
+         ├──  jhu
          ├──  mkqrcode-as-text.pl
          ├──  mkqrcode.pl
          ├──  mkqrcode.sh
@@ -37,7 +40,7 @@ Small Tools
          ├──  z2h -> zen2han
          └──  zen2han
      
-     1 directory, 32 files (Wed Dec 28 13:26:01 JST 2022)
+     2 directories, 35 files (Mon Feb  5 09:19:42 JST 2024)
 
 
 Note: URL = https://github.com/hohno-46466/pZone--public--smallTools

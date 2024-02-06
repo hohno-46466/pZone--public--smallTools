@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Last update:  2024-02-06(Tue) 16:55 JST / 2024-02-06(Tue) 07:55 UTC
+
 if [ "x$(echo $OSTYPE | grep -i darwin)" != "x" ]; then
   # macos
   /bin/echo -n "$(date '+%Y-%m-%d(%a) %H:%M %Z') / $(date -u '+%Y-%m-%d(%a) %H:%M %Z')" | tee -a /dev/stderr | pbcopy

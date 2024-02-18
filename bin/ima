@@ -1,24 +1,30 @@
 #!/bin/sh
 
-# Last update:  2024-02-06(Tue) 16:55 JST / 2024-02-06(Tue) 07:55 UTC
+# Prev update: 2024-02-06(Tue) 16:55 JST / 2024-02-06(Tue) 07:55 UTC
+# Last update: 2024-02-18(Sun) 13:01 JST / 2024-02-18(Sun) 04:01 UTC
+
+export LC_ALL=C
+
+_FMT="%Y-%m-%d(%a) %H:%M %Z"
+_DATESTR=$(echo $(date +"$_FMT") / $(date -u +"$_FMT"))
 
 if [ "x$(echo $OSTYPE | grep -i darwin)" != "x" ]; then
   # macos
-  /bin/echo -n "$(date '+%Y-%m-%d(%a) %H:%M %Z') / $(date -u '+%Y-%m-%d(%a) %H:%M %Z')" | tee -a /dev/stderr | pbcopy
+  /bin/echo -n "$_DATESTR" | tee -a /dev/stderr | pbcopy
   echo 1>&2
 
 elif [ "x$WSL_DISTRO_NAME" != "x" ]; then
   # ubuntu on WSL
-  echo -n "$(date '+%Y-%m-%d(%a) %H:%M %Z') / $(date -u '+%Y-%m-%d(%a) %H:%M %Z')" | tee -a /dev/stderr | nkf -s | clip.exe
+  echo -n "$_DATESTR" | tee -a /dev/stderr | nkf -s | clip.exe
   echo 1>&2
 
 elif [ "x$(which xclip)" != "x" ]; then
   # ubuntu with xclip
-  echo -n "$(date '+%Y-%m-%d(%a) %H:%M %Z') / $(date -u '+%Y-%m-%d(%a) %H:%M %Z')" | tee -a /dev/stderr | xclip -selection clipboard
+  echo -n "$_DATESTR" | tee -a /dev/stderr | xclip -selection clipboard
   echo 1>&2
 
 else
   # ubuntu ???
-  echo "$(date '+%Y-%m-%d(%a) %H:%M %Z') / $(date -u '+%Y-%m-%d(%a) %H:%M %Z')"
+  echo "$_DATESTR"
 fi
 

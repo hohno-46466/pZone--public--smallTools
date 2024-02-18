@@ -4,27 +4,29 @@
 # Last update: 2024-02-18(Sun) 13:01 JST / 2024-02-18(Sun) 04:01 UTC
 
 export LC_ALL=C
+_X=
+[ "x$1" = "x-e" ] && _X="*"
 
 _FMT="%Y-%m-%d(%a) %H:%M %Z"
 _DATESTR=$(echo $(date +"$_FMT") / $(date -u +"$_FMT"))
 
 if [ "x$(echo $OSTYPE | grep -i darwin)" != "x" ]; then
   # macos
-  /bin/echo -n "$_DATESTR" | tee -a /dev/stderr | pbcopy
+  /bin/echo -n "$_X$_DATESTR$_X" | tee -a /dev/stderr | pbcopy
   echo 1>&2
 
 elif [ "x$WSL_DISTRO_NAME" != "x" ]; then
   # ubuntu on WSL
-  echo -n "$_DATESTR" | tee -a /dev/stderr | nkf -s | clip.exe
+  echo -n "$_X$_DATESTR$_X" | tee -a /dev/stderr | nkf -s | clip.exe
   echo 1>&2
 
 elif [ "x$(which xclip)" != "x" ]; then
   # ubuntu with xclip
-  echo -n "$_DATESTR" | tee -a /dev/stderr | xclip -selection clipboard
+  echo -n "$_X$_DATESTR$_X" | tee -a /dev/stderr | xclip -selection clipboard
   echo 1>&2
 
 else
   # ubuntu ???
-  echo "$_DATESTR"
+  echo "$_X$_DATESTR$_X"
 fi
 

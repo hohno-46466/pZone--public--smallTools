@@ -1,16 +1,24 @@
 #!/bin/sh
 
 # Prev update: 2024-02-06(Tue) 16:55 JST / 2024-02-06(Tue) 07:55 UTC
-# Last update: 2024-02-18(Sun) 13:01 JST / 2024-02-18(Sun) 04:01 UTC
+# Prev update: 2024-02-18(Sun) 13:01 JST / 2024-02-18(Sun) 04:01 UTC
+# Last update: 2024-05-17(Fri) 09:47 JST / 2024-05-17(Fri) 00:47 UTC
 
 export LC_ALL=C
+
 _X=
 [ "x$1" = "x-e" ] && _X="*"
+
+_V=
+(set | egrep -q '^VSCODE') && _V="x"
 
 _FMT="%Y-%m-%d(%a) %H:%M %Z"
 _DATESTR=$(echo $(date +"$_FMT") / $(date -u +"$_FMT"))
 
-if [ "x$(echo $OSTYPE | grep -i darwin)" != "x" ]; then
+if [ "x$_V" != "x" ]; then
+  echo "$_DATESTR"
+
+elif [ "x$(echo $OSTYPE | grep -i darwin)" != "x" ]; then
   # macos
   /bin/echo -n "$_X$_DATESTR$_X" | tee -a /dev/stderr | pbcopy
   echo 1>&2

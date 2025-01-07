@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# msc - myShellCommand
+
+# Last update: Mon Dec 23 15:41:29 JST 2024
+
+if [ "x$1" = "x" ]; then
+  echo ""
+  echo "usage: $(basename $0) command arg1 arg2 ..."
+  echo ""
+  exit 1
+fi
+
+# 使用するクリップボードコマンドを自動検出
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    CLIP_PASTE="pbpaste"
+    CLIP_COPY="pbcopy"
+
+elif command -v wl-paste >/dev/null 2>&1 && command -v wl-copy >/dev/null 2>&1; then
+    CLIP_PASTE="wl-paste"
+    CLIP_COPY="wl-copy"
+
+elif command -v xclip >/dev/null 2>&1; then
+    CLIP_PASTE="xclip -selection clipboard -o"
+    CLIP_COPY="xclip -selection clipboard"
+else
+    echo "Clipboard tool not found. Install pbcopy/pbpaste (macOS), xclip, or wl-clipboard (Linux)."
+    exit 1
+fi
+
+# 第1引数をコマンドとして、残りを引数として渡す
+command="$1"
+shift
+
+# 選択したクリップボード操作と指定したコマンドで処理
+$CLIP_PASTE | eval "$command" "$@" | $CLIP_COPY
+
+exit $?

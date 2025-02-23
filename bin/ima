@@ -2,39 +2,44 @@
 
 # Prev update: 2024-02-06(Tue) 16:55 JST / 2024-02-06(Tue) 07:55 UTC
 # Prev update: 2024-02-18(Sun) 13:01 JST / 2024-02-18(Sun) 04:01 UTC
-# Last update: 2024-05-17(Fri) 09:47 JST / 2024-05-17(Fri) 00:47 UTC
+# Prev update: 2024-05-17(Fri) 09:47 JST / 2024-05-17(Fri) 00:47 UTC
+# Last update: 2025-01-24(Fri) 13:15 JST / 2025-01-24(Fri) 04:15 UTC
+
+# usage: ima [-e|-n]
 
 export LC_ALL=C
 
 _X=
-[ "x$1" = "x-e" ] && _X="*"
-
+[ "x$1" = "x-e" ] && _X="*"		# -e なら _X を "*" にする
 _V=
-(set | egrep -q '^VSCODE') && _V="x"
+(set | egrep -q '^VSCODE') && _V="x"	# VSCodeでの実行あるいは引数が -n なら -V を "x" にする
+[ "x$1" = "x-n" ] && _V="x"
 
 _FMT="%Y-%m-%d(%a) %H:%M %Z"
 _DATESTR=$(echo $(date +"$_FMT") / $(date -u +"$_FMT"))
 
 if [ "x$_V" != "x" ]; then
+  # VSCode からの実行または引数が -n なら $_DATESTR を単純に出力する（$_X は利用しない）
   echo "$_DATESTR"
 
 elif [ "x$(echo $OSTYPE | grep -i darwin)" != "x" ]; then
-  # macos
+  # macOS なら pbcopy を使う
   /bin/echo -n "$_X$_DATESTR$_X" | tee -a /dev/stderr | pbcopy
   echo 1>&2
 
 elif [ "x$WSL_DISTRO_NAME" != "x" ]; then
-  # ubuntu on WSL
+  # ubuntu on WSL なら clip.exe を使う
   echo -n "$_X$_DATESTR$_X" | tee -a /dev/stderr | nkf -s | clip.exe
   echo 1>&2
 
 elif [ "x$(which xclip)" != "x" ]; then
-  # ubuntu with xclip
+  # 素の ubuntu with xclip なら xclilp を使う
   echo -n "$_X$_DATESTR$_X" | tee -a /dev/stderr | xclip -selection clipboard
   echo 1>&2
 
 else
   # ubuntu ???
+  # 上記に該当しなければ単純に出力する（ただし $_X は有効）
   echo "$_X$_DATESTR$_X"
 fi
 

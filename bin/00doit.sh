@@ -22,3 +22,10 @@ opts="$opts --exclude='*.txt'"
 
 echo $(echo rsync -avE $@ $opts $(pwd)/ $TARGET)
 eval $(echo rsync -avE $@ $opts $(pwd)/ $TARGET)
+
+echo ""
+SRC=jump-to-tty.scpt
+DST=$HOME/GitHub/Gist/d29d9270d9d2ac8257a2097005b0fa64
+
+echo $(echo rsync -avE $@ $opts $(pwd)/$SRC $DST/)
+eval $(echo rsync -avE $@ $opts $(pwd)/$SRC $DST/)

@@ -37,6 +37,7 @@ property VERSION : "No.009"
     「ハイブリッド」挙動にしている
   ─────────────────────────────────────────────────────────────────────────────
 *)
+
 on run argv
   ---------------------------------------------------------------------------
   -- 1) ヘルプ / バージョン（どのモードでも最優先で処理）
@@ -154,8 +155,8 @@ on run argv
   end repeat
 end run
 
-
 ---------------------------------------------------------------------------
+
 -- 収集：Terminal のネイティブ `tty` を読む
 on collectTTYs()
   -- 返却用のリスト（各要素は {wIndex, tIndex, ttyText, titleText} の4要素リスト）
@@ -207,6 +208,7 @@ on collectTTYs()
 end collectTTYs
 
 ---------------------------------------------------------------------------
+
 -- /dev/tty018, /dev/ttys018, tty018, ttys018, 018 などを受け入れて検索
 on findByTTY(entries, ttyQuery)
   -- ユーザ入力を正規化（/dev/ を外す、小文字化、"tty" → "ttys"、数字だけなら "ttys" を付与）
@@ -239,6 +241,7 @@ on findByTTY(entries, ttyQuery)
 end findByTTY
 
 ---------------------------------------------------------------------------
+
 -- 正規化：/dev/ を外し、小文字化し、"tty" を "ttys" へ正規化、数字だけなら "ttys" を付与
 on normalizeTTY(s)
   -- 1) 前後の空白や改行を除去し、テキスト化
@@ -270,6 +273,7 @@ on normalizeTTY(s)
 end normalizeTTY
 
 ---------------------------------------------------------------------------
+
 -- 末尾の数字だけ取り出す（例: "ttys018" -> "018"、"abc" -> ""、"123" -> "123"）
 on trailingDigits(s)
   set t to s as text
@@ -294,6 +298,7 @@ on trailingDigits(s)
 end trailingDigits
 
 ---------------------------------------------------------------------------
+
 -- 文字列が全て数字（ASCII '0'〜'9'）かどうか判定
 on isAllDigits(s)
   -- 1) 必ず text にしておく
@@ -313,8 +318,8 @@ on isAllDigits(s)
 end isAllDigits
 
 ---------------------------------------------------------------------------
--- 先頭一致（AppleScript 簡易版）
 
+-- 先頭一致（AppleScript 簡易版）
 -- on startsWith(s, prefix)
 --   set a to s as text              -- 比較対象
 --   set p to prefix as text         -- 接頭辞
@@ -338,7 +343,8 @@ on startsWith(s, prefix)
 end startsWith
 
 ---------------------------------------------------------------------------
--- -- 小文字化（ASCII）
+
+-- 小文字化（ASCII）
 on toLowerASCII(s)
   try
     -- do shell script: 外部シェルを起動してパイプで tr に通す
@@ -353,6 +359,7 @@ on toLowerASCII(s)
 end toLowerASCII
 
 ---------------------------------------------------------------------------
+
 -- タブを前面に
 on focusEntry(entryList)
   -- entryList の構造: {wIndex:int, tIndex:int, ttyText:string, titleText:string}
@@ -374,6 +381,7 @@ end focusEntry
 
 
 ---------------------------------------------------------------------------
+
 -- 前後空白・改行除去
 on trimText(s)
   set s2 to s as text
@@ -400,7 +408,7 @@ on trimText(s)
 end trimText
 
 ---------------------------------------------------------------------------
--- 文字列リストを昇順にソート（BSD sort 使用）
+
 -- 文字列リストを昇順にソート（BSD sort を利用）
 -- 入力: xs = {"lineA", "lineB", ...}
 -- 出力: 昇順に並んだ新しいリスト
@@ -433,6 +441,7 @@ on sortTextList(xs)
 end sortTextList
 
 ---------------------------------------------------------------------------
+
 -- スペース区切りでトークン列を 1 本の文字列に連結するヘルパ
 -- ここに渡す各要素は「すでに quoted form 済み」であることを前提にしているため、
 -- 要素内部にスペース等があっても安全に 1 トークンとして保持される。

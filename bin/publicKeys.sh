@@ -14,6 +14,7 @@ FINGERPRINTS="$(ssh-add -l | awk '{print $2}')"
 for key in ~/.ssh/*.pub; do
   fingerprint="$(ssh-keygen -lf "$key" 2>/dev/null | awk '{print $2}')"
   if echo "$FINGERPRINTS" | grep -Fxq "$fingerprint"; then
-    echo "Matching public key: $key"
+    # echo "Matching public key: $key"
+    echo "$key"
   fi
 done

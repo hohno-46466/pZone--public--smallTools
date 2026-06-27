@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# 2026-06-27(Sat) 13:58 JST / 2026-06-27(Sat) 04:58 UTC
+# Prev update: 2026-06-27(Sat) 13:58 JST / 2026-06-27(Sat) 04:58 UTC
+# Last update: 2026-06-27(Sat) 15:32 JST / 2026-06-27(Sat) 06:32 UTC
 
 DATESTR=$(/bin/date "+%Y-%m-%d %H:%M:%S %Z")
 DATESTR=$(/bin/date "+%Y-%m-%d %Z")
@@ -12,5 +13,11 @@ elif [ $TIMEVAL -le 9 ]; then x="おはようございます";
 elif [ $TIMEVAL -le 16 ]; then x="こんにちは"; 
 else x="こんばんは"; 
 fi
-# echo "$x ($DATESTR)" > $HOME/Desktop/今日のタイトル1.txt
-echo "$x ($DATESTR)" > /var/tmp/$USER/今日のタイトル1.txt
+if uname -r | grep -iq "wsl"; then
+  echo "$x ($DATESTR)" > $HOME/Desktop/今日のタイトル1.txt
+else
+  echo "$x ($DATESTR)" > /var/tmp/$USER/今日のタイトル1.txt
+fi
+
+# crontab setting
+# * * * * * /bin/sh $HOME/bin/今日のタイトル1.sh

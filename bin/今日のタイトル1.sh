@@ -12,4 +12,5 @@ elif [ $TIMEVAL -le 9 ]; then x="おはようございます";
 elif [ $TIMEVAL -le 16 ]; then x="こんにちは"; 
 else x="こんばんは"; 
 fi
-echo "$x ($DATESTR)" > $HOME/Desktop/今日のタイトル1.txt
+# echo "$x ($DATESTR)" > $HOME/Desktop/今日のタイトル1.txt
+echo "$x ($DATESTR)" > /var/tmp/$USER/今日のタイトル1.txt

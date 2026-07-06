@@ -5,8 +5,8 @@
 # Prev update: Tue Apr 19 23:48:45 JST 2022
 # Last update: Thu Sep 15 11:07:57 JST 2022 (updated for mkqrcodeG2.py)
 
-scr=$HOME/bin/mkqrcodeG2.py
-scr=$HOME/bin/mkqrcode.pl
+scr="$HOME/bin/mkqrcodeG2.py"
+scr="$HOME/bin/mkqrcode.pl"
 prefix="$HOME/tmp"
 
 if [ "x$1" = "x-h" -o "x$1" = "x-help" -o "x$1" = "x--help" ]; then

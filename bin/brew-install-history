@@ -1,0 +1,16 @@
+#!/bin/sh
+
+cellar="$(brew --cellar)"
+caskroom="$(brew --caskroom)"
+
+brew info --json=v2 --installed | jq -r '
+  (.formulae[] | select(any(.installed[]; .installed_on_request == true)) | "formula\t" + .name),
+  (.casks[] | "cask\t" + .token)
+' | while IFS=$'\t' read -r type name; do
+  if [ "$type" = "formula" ] && [ -d "$cellar/$name" ]; then
+    /usr/bin/stat -f "%SB [formula] $name" -t "%Y-%m-%d %H:%M:%S" "$cellar/$name"
+  elif [ "$type" = "cask" ] && [ -d "$caskroom/$name" ]; then
+    /usr/bin/stat -f "%SB [cask]    $name" -t "%Y-%m-%d %H:%M:%S" "$caskroom/$name"
+  fi
+done | sort
+

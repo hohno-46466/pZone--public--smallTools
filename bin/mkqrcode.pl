@@ -2,9 +2,13 @@
 #
 # usage: perl mkqrcode.pl [ URL [ ECC [ Version [ ModuleSize ] ] ] ]
 #
+# Last update: 2026-10-05(Mon) 07:34 JST / 2026-10-04(Sun) 22:34 UTC
+#
+
 use strict;
 use warnings;
 use GD::Barcode::QRcode;
+use File::Path qw(make_path); # ディレクトリ作成用
 
 # my $url = 'http://www.google.com';
 # my $url = 'https://goo.gl/UlxaEl';
@@ -38,33 +42,45 @@ while ((@ARGV >= 1) && (($ARGV[0] eq "-d") || ($ARGV[0] eq "--debug"))) {
   shift;
 }
 
-if (@ARGV >= 1) { $url = $ARGV[0]; }
-if (@ARGV >= 2) { $QRecc = $ARGV[1]; }
-if (@ARGV >= 3) { $QRversion = $ARGV[2]; }
-if (@ARGV >= 4) { $QRmoduleSize = $ARGV[3]; }
+# shift を使って順番に割り当てる（引数のズレを防止）
+if (@ARGV >= 1) { $url = shift; }
+if (@ARGV >= 1) { $QRecc = shift; }
+if (@ARGV >= 1) { $QRversion = shift; }
+if (@ARGV >= 1) { $QRmoduleSize = shift; }
  
 #TEXT# my $qr  = GD::Barcode::QRcode->new($url, {Ecc => 'H', Version => 3, ModuleSize => 1});
 #TEXT# my $qrstr = $qr->barcode();
 #TEXT# print STDOUT "$qrstr";
 #TEXT# exit(0);
-#
+
 my $qr;
 
-eval {$qr  = GD::Barcode::QRcode->new($url, {
+eval {
+  $qr  = GD::Barcode::QRcode->new($url, {
 #    Ecc => 'M', Version => 3, ModuleSize => 2,
 #    Ecc => 'H', Version => 3, ModuleSize => 2,
 #    Ecc => 'H', Version => 3, ModuleSize => 4,
      Ecc => $QRecc, Version => $QRversion, ModuleSize => $QRmoduleSize,
-})->plot};
+  })->plot;
+};
 
-if ($@) {
+if ($@ || !$qr) { # $qr が空の場合も考慮
   if ($debugFlag >= 1) { 
     print("Can't create QRcode with Ecc=>'$QRecc' and Version=>'$QRversion'\n");
+    if ($@) { print("Raw Error: $@\n"); } # 生のエラーメッセージを表示
   }
   exit(99);
 }
 
-open my $fh, '>', $out or die;
+# 出力先ディレクトリ (~/tmp) がなければ自動作成
+my ($dir) = $out =~ m|(.*)/|;
+if (!-d $dir) {
+  make_path($dir);
+}
+
+# エラー時に理由がわかるように die に $! を追加
+open my $fh, '>', $out or die "Can't open $out: $!";
+
 if ($debugFlag >= 2) { 
   print("QRcode with Ecc=>'$QRecc' and Version=>'$QRversion' has been created.\n");
 }

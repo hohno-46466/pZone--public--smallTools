@@ -3,10 +3,11 @@
 # Prev update: Fri Dec  2 11:04:19 JST 2016
 # Prev update: Wed Oct  6 06:15:44 JST 2021 (updated for bit.ly short URL)
 # Prev update: Tue Apr 19 23:48:45 JST 2022
-# Last update: Thu Sep 15 11:07:57 JST 2022 (updated for mkqrcodeG2.py)
+# Prev update: Thu Sep 15 11:07:57 JST 2022 (updated for mkqrcodeG2.py)
+# Last update: 2026-10-05(Mon) 07:41 JST / 2026-10-04(Sun) 22:41 UTC
 
-scr="$HOME/bin/mkqrcode.pl"
 scr="$HOME/bin/mkqrcodeG2.py"
+scr="$HOME/bin/mkqrcode.pl"
 prefix="$HOME/tmp"
 
 if [ "x$1" = "x-h" -o "x$1" = "x-help" -o "x$1" = "x--help" ]; then
@@ -48,8 +49,8 @@ elif [ "x$Qmode" = "B" ]; then
   fi
 fi
 
-# tmp="${prefix}/qr.gif"
 tmp="${prefix}/QRoutput.gif"
+tmp="${prefix}/qr.gif"
 
 if [ "x$Qmode" = "xG" ]; then
   echo "Qmode(G)"
@@ -106,6 +107,8 @@ done
 # mv "$tmp" "$out" && echo "result: $out"
 
 $scr "$str" || exit 1;
+echo "debug: $(ls -l $tmp)"
+echo "debug: $tmp -> $out"
 mv "$tmp" "$out" && echo "result: $out"
 
 ls -l "$out"
